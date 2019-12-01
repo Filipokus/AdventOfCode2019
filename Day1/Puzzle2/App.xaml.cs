@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Day1_Puzzle02
+namespace Day1
 {
     /// <summary>
     /// Interaction logic for App.xaml
