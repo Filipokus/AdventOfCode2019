@@ -24,12 +24,22 @@ namespace Day1
         {
             InitializeComponent();
         }
+        List<int> fuelHistory = new List<int>();
         public int CalculateFuelNeeded(int mass)
         {
             int fuelNeeded = (mass / 3) - 2;
+            fuelHistory.Add(fuelNeeded);
             return fuelNeeded;
         }
-
+        public int CalculateTotalFuelNeeded()
+        {
+            int totalFuelNeeded = 0;
+            foreach (int i in fuelHistory)
+            {
+                totalFuelNeeded += i;
+            }
+            return totalFuelNeeded;
+        }
         private void btnCalculateFuel_Click(object sender, RoutedEventArgs e)
         {
             string rawMass = txtMass.Text;
@@ -40,6 +50,10 @@ namespace Day1
                     int fuelNeeded = CalculateFuelNeeded(mass);
                     string result = $"For this module - {fuelNeeded} fuel is required";
                     txtFuelNeeded.Text = result;
+                    lbxFuelNeeded.ItemsSource = null;
+                    lbxFuelNeeded.ItemsSource = fuelHistory;
+                    txtTotalFuelNeeded.Text = CalculateTotalFuelNeeded().ToString();
+                    txtMass.Clear();
                 }
                 else
                 {
@@ -50,6 +64,14 @@ namespace Day1
             {
                 MessageBox.Show("Please specify the mass of the module first");
             }
+        }
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            fuelHistory.Clear();
+            txtMass.Clear();
+            txtFuelNeeded.Text = "";
+            txtTotalFuelNeeded.Clear();
+            lbxFuelNeeded.ItemsSource = null;
         }
     }
 }
