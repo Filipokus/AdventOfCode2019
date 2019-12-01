@@ -48,7 +48,7 @@ namespace Day1
                 if (int.TryParse(rawMass, out int mass))
                 {
                     int fuelNeeded = CalculateFuelNeeded(mass);
-                    string result = $"For this module - {fuelNeeded} fuel is required";
+                    string result = $"For this module - {fuelNeeded} fuel is required. Calculated from {mass} mass";
                     txtFuelNeeded.Text = result;
                     lbxFuelNeeded.ItemsSource = null;
                     lbxFuelNeeded.ItemsSource = fuelHistory;
