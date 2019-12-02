@@ -189,13 +189,10 @@ namespace Day2_Puzzle1
             opcodeList.Add(14);
             opcodeList.Add(0);
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpcodeDecoder()
         {
-            AddToList();
-            for (int i = 0; i < opcodeList.Count; i+=4)
+            for (int i = 0; i < opcodeList.Count; i += 4)
             {
-                int noun = opcodeList[1];
-                int verb = opcodeList[2];
                 if (opcodeList[i] == 1)
                 {
                     int firstPosition = opcodeList[i + 1];
@@ -221,7 +218,40 @@ namespace Day2_Puzzle1
                     i = opcodeList.Count + 1;
                 }
             }
+        }
+        private void BtnBuiltInOpcode_Click(object sender, RoutedEventArgs e)
+        {
+            AddToList();
+            OpcodeDecoder();
+            txtResult.Text = null;
             txtResult.Text = opcodeList[0].ToString();
+            lbxOpcodeOperator.ItemsSource = null;
+            lbxOpcodeOperator.ItemsSource = opcodeList;
+        }
+
+        private void BtnClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            lbxOpcodeOperator.ItemsSource = null;
+            opcodeList.Clear();
+            txtInput.Text = "";
+            txtResult.Text="Adress 0 result";
+        }
+
+        private void BtnManualAdd_Click(object sender, RoutedEventArgs e)
+        {
+            string rawOpcodeToAdd = txtInput.Text;
+            if (rawOpcodeToAdd.Length != 0)
+            {
+                if (int.TryParse(rawOpcodeToAdd, out int opcodeToAdd))
+                {
+                    opcodeList.Add(opcodeToAdd);
+                    OpcodeDecoder();
+                    lbxOpcodeOperator.ItemsSource = null;
+                    lbxOpcodeOperator.ItemsSource = opcodeList;
+                    txtResult.Text = null;
+                    txtResult.Text = opcodeList[0].ToString();
+                }
+            }
         }
     }
 }

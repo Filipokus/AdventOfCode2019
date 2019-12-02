@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Day2_Puzzle1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="OpcodeTranslator" Height="170" Width="210" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="41,59,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="23" Margin="41,110,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+        <Button x:Name="btnBuiltInOpcode" Content="Built in Opcode" HorizontalAlignment="Left" Margin="94,107,0,0" VerticalAlignment="Top" Width="94" Click="BtnBuiltInOpcode_Click" RenderTransformOrigin="-0.504,-4.757"/>
+        <Button x:Name="btnManualAdd" Content="Add" HorizontalAlignment="Left" Margin="144,38,0,0" VerticalAlignment="Top" Width="44" Click="BtnManualAdd_Click" RenderTransformOrigin="-0.504,-4.757"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="23" Margin="94,79,0,0" TextWrapping="Wrap" Text="Adress 0 Result" VerticalAlignment="Top" Width="94" RenderTransformOrigin="1.399,-4.938" IsEnabled="False"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="23" Margin="94,10,0,0" TextWrapping="Wrap" Text="Type manually" VerticalAlignment="Top" Width="94" RenderTransformOrigin="1.399,-4.938"/>
+        <ListBox x:Name="lbxOpcodeOperator" HorizontalAlignment="Left" Height="118" Margin="10,10,0,0" VerticalAlignment="Top" Width="79"/>
+        <Button x:Name="btnClearAll" Content="Clear" HorizontalAlignment="Left" Margin="94,38,0,0" VerticalAlignment="Top" Width="45" Click="BtnClearAll_Click" RenderTransformOrigin="-0.504,-4.757"/>
     </Grid>
 </Window>
