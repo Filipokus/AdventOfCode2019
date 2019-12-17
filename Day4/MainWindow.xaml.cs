@@ -96,33 +96,27 @@ namespace Day4
             txtResult.Text = numberOfPossiblePasswords.ToString();
         }
 
+        public bool IsPassWordValid(int numberSequence) 
+        {
+            string potentialPassword = numberSequence.ToString();
+            foreach (char a in potentialPassword)
+            {
+                if (potentialPassword.Count(c => c == a) == 2)
+                {
+                    correctPasswords2.Add(numberSequence);
+                    return true;
+                }
+            }
+            return false; 
+        }
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            
             int numberOfPossiblePasswords = 0;
             foreach (int numberSequence in correctPasswords1)
             {
-                int doubles = 0;
-                int moreThanDoubles = 0;
-                string potentialPassword = numberSequence.ToString();
-                for (int i = 0; i < (potentialPassword.Length - 1); i ++)
-                {
-                    if (potentialPassword[i] == potentialPassword[i + 1])
-                    {
-                            doubles++;
-                    }
-                }
-                for (int i = 0; i < (potentialPassword.Length - 2); i++)
-                {
-                    if (potentialPassword[i] == potentialPassword[i + 2] && doubles > 1)
-                    {
-                        moreThanDoubles++;
-                    }
-                }
-                if (moreThanDoubles <= 1)
+                if (IsPassWordValid(numberSequence) == true)
                 {
                     numberOfPossiblePasswords++;
-                    correctPasswords2.Add(numberSequence);
                 }
             }
             txtResult.Text = "";
